@@ -1,0 +1,7 @@
+plantype,days,balance
+basic,20,1000.00
+basic,90,1200.00
+student,200,1200.00
+student,400,1200.00
+premium,40,2400.00
+premium,100,2400.00

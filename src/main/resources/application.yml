@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/timedeposit
+    username: timedeposit
+    password: timedeposit
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    contexts: demo                  # "demo" also loads the sample data; remove it for a clean schema
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate            # schema is owned by Liquibase
+      naming:
+        # keep names exactly as in the brief (timeDeposits, planType, timeDepositId...); PostgreSQL folds them to lowercase
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+springdoc:
+  api-docs:
+    enabled: false                  # the contract is the hand-written openapi.yaml, not generated
+  swagger-ui:
+    url: /openapi.yaml
+    path: /swagger-ui.html

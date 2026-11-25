@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-demo-data
+      author: lukasz
+      context: demo
+      changes:
+        - loadData:
+            file: db/changelog/data/time-deposits.csv
+            tableName: timedeposits
+            separator: ','
+            columns:
+              - column: { name: plantype, type: STRING }
+              - column: { name: days, type: NUMERIC }
+              - column: { name: balance, type: NUMERIC }
+        - loadData:
+            file: db/changelog/data/withdrawals.csv
+            tableName: withdrawals
+            separator: ','
+            columns:
+              - column: { name: timedepositid, type: NUMERIC }
+              - column: { name: amount, type: NUMERIC }
+              - column: { name: date, type: DATE }

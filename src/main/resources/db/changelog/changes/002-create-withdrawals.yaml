@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-withdrawals
+      author: lukasz
+      changes:
+        - createTable:
+            tableName: withdrawals
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  generationType: BY DEFAULT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: timedepositid
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_withdrawals_time_deposit
+                    references: timedeposits(id)
+              - column:
+                  name: amount
+                  type: numeric(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date
+                  type: date
+                  constraints:
+                    nullable: false

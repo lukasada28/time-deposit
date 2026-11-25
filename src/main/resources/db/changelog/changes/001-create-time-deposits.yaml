@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-time-deposits
+      author: lukasz
+      changes:
+        - createTable:
+            tableName: timedeposits        # = timeDeposits in the brief (PostgreSQL folds to lowercase)
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  generationType: BY DEFAULT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: plantype
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: days
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(19,2)
+                  constraints:
+                    nullable: false
